@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>회원 탈퇴 - All In One Delivery</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f9f9f9; }
+        .container { width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #cc0000; }
+        .warning { color: #cc0000; font-size: 0.9em; line-height: 1.5; padding: 12px; background: #fff0f0; border-radius: 4px; margin-bottom: 15px; border-left: 4px solid #ff4444; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>회원 탈퇴 신청</h2>
+
+    <div class="warning">
+        ⚠️ <b>정산 보호 및 탈퇴 제한 안내</b><br>
+        - 탈퇴 시 모든 회원 정보, 상점 정보 및 상품 데이터는 즉시 삭제되며 복구할 수 없습니다.<br>
+        - <b>미결제 대금 및 미정산 분쟁 방지</b>를 위해, 최근 <b>4주(28일) 이내</b>에 주문 접수(상점), 배달 수행(라이더), 또는 주문 이용(고객) 내역이 존재하면 탈퇴가 제한됩니다.
+    </div>
+
+    <form action="process_withdraw.php" method="POST">
+        <label>이메일 계정</label>
+        <input type="email" name="user_id" required placeholder="example@gmail.com">
+
+        <label>비밀번호 확인</label>
+        <input type="password" name="password" required placeholder="비밀번호를 입력하세요">
+
+        <button type="submit" onclick="return confirm('정말로 탈퇴하시겠습니까?\n최근 4주간 배달/주문 거래가 있었다면 탈퇴가 거절됩니다.')">탈퇴하기</button>
+    </form>
+</div>
+</body>
+</html>
