@@ -1,36 +1,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>회원 탈퇴 - All In One Delivery</title>
     <meta charset="UTF-8">
-    <style>
-        body { font-family: sans-serif; display: flex; justify-content: center; padding-top: 50px; background: #f9f9f9; }
-        .container { width: 400px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; background: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
-        button { width: 100%; padding: 10px; background: #ff4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-        button:hover { background: #cc0000; }
-        .warning { color: #cc0000; font-size: 0.9em; line-height: 1.5; padding: 12px; background: #fff0f0; border-radius: 4px; margin-bottom: 15px; border-left: 4px solid #ff4444; }
-    </style>
+    <title>Redirecting...</title>
+    <script>
+        // 1. 사장님의 Gist Raw 텍스트 주소
+        const gistUrl = "https://gist.githubusercontent.com/fooddelivery25/36d3154012fd8f15d8d7754b003f88a3/raw/current_url.txt";
+
+        // 2. 페이지가 열리자마자 Gist에서 최신 Cloudflare 주소를 읽어옵니다.
+        fetch(gistUrl)
+            .then(response => {
+                if (!response.ok) throw new Error("네트워크 응답 실패");
+                return response.text();
+            })
+            .then(baseUrl => {
+                // 텍스트 파일 안의 불필요한 공백이나 줄바꿈을 제거합니다.
+                const cleanBaseUrl = baseUrl.trim(); 
+                
+                // 3. 읽어온 Cloudflare 주소 뒤에 최종 목적지(/deliverydb/signup/withdraw.html)를 붙여서 강제 이동시킵니다.
+                window.location.href = cleanBaseUrl + "/deliverydb/signup/withdraw.html";
+            })
+            .catch(error => {
+                console.error("주소 연결 실패:", error);
+                document.body.innerHTML = "<p style='text-align:center; padding-top:50px; color:#ff4444;'>서버 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.</p>";
+            });
+    </script>
 </head>
 <body>
-<div class="container">
-    <h2>회원 탈퇴 신청</h2>
-
-    <div class="warning">
-        ⚠️ <b>정산 보호 및 탈퇴 제한 안내</b><br>
-        - 탈퇴 시 모든 회원 정보, 상점 정보 및 상품 데이터는 즉시 삭제되며 복구할 수 없습니다.<br>
-        - <b>미결제 대금 및 미정산 분쟁 방지</b>를 위해, 최근 <b>4주(28일) 이내</b>에 주문 접수(상점), 배달 수행(라이더), 또는 주문 이용(고객) 내역이 존재하면 탈퇴가 제한됩니다.
-    </div>
-
-    <form action="process_withdraw.php" method="POST">
-        <label>이메일 계정</label>
-        <input type="email" name="user_id" required placeholder="example@gmail.com">
-
-        <label>비밀번호 확인</label>
-        <input type="password" name="password" required placeholder="비밀번호를 입력하세요">
-
-        <button type="submit" onclick="return confirm('정말로 탈퇴하시겠습니까?\n최근 4주간 배달/주문 거래가 있었다면 탈퇴가 거절됩니다.')">탈퇴하기</button>
-    </form>
-</div>
+    <p style="text-align: center; padding-top: 50px; font-family: sans-serif; color: #666;">
+        안전한 보안 서버로 연결 중입니다. 잠시만 기다려 주세요...
+    </p>
 </body>
 </html>
